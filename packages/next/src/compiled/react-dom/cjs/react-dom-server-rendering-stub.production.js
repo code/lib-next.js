@@ -10,7 +10,7 @@
 
 'use strict';
 
-var React = require("next/dist/compiled/react");
+var React = require('react');
 
 var ReactVersion = '18.3.0-canary-14898b6a9-20240318';
 

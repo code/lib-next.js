@@ -10,8 +10,8 @@
 
 'use strict';
 
-var React = require("next/dist/compiled/react");
-var ReactDOM = require("next/dist/compiled/react-dom");
+var React = require('react');
+var ReactDOM = require('react-dom');
 
 /**
  * `ReactInstanceMap` maintains a mapping from a public facing stateful

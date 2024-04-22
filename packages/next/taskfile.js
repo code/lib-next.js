@@ -1543,18 +1543,6 @@ export async function copy_vendor_react(task_) {
     const packageSuffix = opts.experimental ? `-experimental` : ``
     function ensureVendoredReactIsUsed(source) {
       return source
-        .replace(
-          /require\(["']scheduler["']\)/g,
-          `require("next/dist/compiled/scheduler${packageSuffix}")`
-        )
-        .replace(
-          /require\(["']react["']\)/g,
-          `require("next/dist/compiled/react${packageSuffix}")`
-        )
-        .replace(
-          /require\(["']react-dom["']\)/g,
-          `require("next/dist/compiled/react-dom${packageSuffix}")`
-        )
     }
 
     // Override the `react`, `react-dom` and `scheduler`'s package names to avoid
@@ -1617,15 +1605,6 @@ export async function copy_vendor_react(task_) {
       .target(`src/compiled/react${packageSuffix}`)
     yield task
       .source(join(reactDir, 'cjs/**/*.{js,map}'))
-      // eslint-disable-next-line require-yield
-      .run({ every: true }, function* (file) {
-        const source = file.data.toString()
-        // We replace the module/chunk loading code with our own implementation in Next.js.
-        file.data = source.replace(
-          /require\(["']react["']\)/g,
-          `require("next/dist/compiled/react${packageSuffix}")`
-        )
-      })
       .target(`src/compiled/react${packageSuffix}/cjs`)
 
     yield task

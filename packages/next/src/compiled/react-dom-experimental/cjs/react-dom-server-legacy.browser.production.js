@@ -10,8 +10,8 @@
 
 'use strict';
 
-var React = require("next/dist/compiled/react-experimental");
-var ReactDOM = require("next/dist/compiled/react-dom-experimental");
+var React = require('react');
+var ReactDOM = require('react-dom');
 
 // Do not require this module directly! Use normal `invariant` calls with
 // template literal strings. The messages will be replaced with error codes
