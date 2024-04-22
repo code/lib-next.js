@@ -252,7 +252,6 @@ export function createRSCAliases(
   let alias: Record<string, string> = {
     react$: `next/dist/compiled/react${bundledReactChannel}`,
     'react-dom$': `next/dist/compiled/react-dom${bundledReactChannel}`,
-    scheduler$: `next/dist/compiled/scheduler${bundledReactChannel}`,
     'react/jsx-runtime$': `next/dist/compiled/react${bundledReactChannel}/jsx-runtime`,
     'react/jsx-dev-runtime$': `next/dist/compiled/react${bundledReactChannel}/jsx-dev-runtime`,
     'react-dom/client$': `next/dist/compiled/react-dom${bundledReactChannel}/client`,
@@ -274,19 +273,30 @@ export function createRSCAliases(
     if (layer === WEBPACK_LAYERS.serverSideRendering) {
       alias = Object.assign(alias, {
         'react/jsx-runtime$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-jsx-runtime`,
+        'next/dist/compiled/react/jsx-runtime$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-jsx-runtime`,
         'react/jsx-dev-runtime$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-jsx-dev-runtime`,
+        'next/dist/compiled/react/jsx-dev-runtime$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-jsx-dev-runtime`,
         react$: `next/dist/server/future/route-modules/app-page/vendored/${layer}/react`,
+        'next/dist/compiled/react$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react`,
         'react-dom$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-dom`,
+        'next/dist/compiled/react-dom$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-dom`,
         'react-server-dom-webpack/client.edge$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-server-dom-webpack-client-edge`,
+        'next/dist/compiled/react-server-dom-webpack/client.edge$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-server-dom-webpack-client-edge`,
       })
     } else if (layer === WEBPACK_LAYERS.reactServerComponents) {
       alias = Object.assign(alias, {
         'react/jsx-runtime$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-jsx-runtime`,
+        'next/dist/compiled/react/jsx-runtime$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-jsx-runtime`,
         'react/jsx-dev-runtime$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-jsx-dev-runtime`,
+        'next/dist/compiled/react/jsx-dev-runtime$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-jsx-dev-runtime`,
         react$: `next/dist/server/future/route-modules/app-page/vendored/${layer}/react`,
+        'next/dist/compiled/react$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react`,
         'react-dom$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-dom`,
+        'next/dist/compiled/react-dom$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-dom`,
         'react-server-dom-webpack/server.edge$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-server-dom-webpack-server-edge`,
+        'next/dist/compiled/react-server-dom-webpack/server.edge$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-server-dom-webpack-server-edge`,
         'react-server-dom-webpack/server.node$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-server-dom-webpack-server-node`,
+        'next/dist/compiled/react-server-dom-webpack/server.node$': `next/dist/server/future/route-modules/app-page/vendored/${layer}/react-server-dom-webpack-server-node`,
       })
     }
   }
@@ -297,12 +307,21 @@ export function createRSCAliases(
         'react$'
       ] = `next/dist/compiled/react${bundledReactChannel}/react.react-server`
       alias[
+        'next/dist/compiled/react$'
+      ] = `next/dist/compiled/react${bundledReactChannel}/react.react-server`
+      alias[
         'react-dom$'
+      ] = `next/dist/compiled/react-dom${bundledReactChannel}/react-dom.react-server`
+      alias[
+        'next/dist/compiled/react-dom$'
       ] = `next/dist/compiled/react-dom${bundledReactChannel}/react-dom.react-server`
     } else {
       // x-ref: https://github.com/facebook/react/pull/25436
       alias[
         'react-dom$'
+      ] = `next/dist/compiled/react-dom${bundledReactChannel}/server-rendering-stub`
+      alias[
+        'next/dist/compiled/react-dom$'
       ] = `next/dist/compiled/react-dom${bundledReactChannel}/server-rendering-stub`
     }
   }
@@ -310,6 +329,9 @@ export function createRSCAliases(
   if (reactProductionProfiling) {
     alias[
       'react-dom$'
+    ] = `next/dist/compiled/react-dom${bundledReactChannel}/profiling`
+    alias[
+      'next/dist/compiled/react-dom$'
     ] = `next/dist/compiled/react-dom${bundledReactChannel}/profiling`
   }
 

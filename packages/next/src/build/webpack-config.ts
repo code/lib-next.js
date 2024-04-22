@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'next/dist/compiled/react'
 import ReactRefreshWebpackPlugin from 'next/dist/compiled/@next/react-refresh-utils/dist/ReactRefreshWebpackPlugin'
 import { yellow, bold } from '../lib/picocolors'
 import crypto from 'crypto'
@@ -762,7 +762,10 @@ export default async function getBaseWebpackConfig(
     'react',
     'react-dom',
     ...(hasAppDir
-      ? [`react${bundledReactChannel}`, `react-dom${bundledReactChannel}`]
+      ? [
+          `next/dist/compiled/react${bundledReactChannel}`,
+          `next/dist/compiled/react-dom${bundledReactChannel}`,
+        ]
       : []),
   ]) {
     addPackagePath(packageName, dir, topLevelFrameworkPaths)

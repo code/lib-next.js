@@ -10,8 +10,8 @@
 
 'use strict';
 
-var React = require('react');
-var Scheduler = require('scheduler');
+var React = require("next/dist/compiled/react");
+var Scheduler = require("next/dist/compiled/scheduler");
 
 const Internals = {
   usingClientEntryPoint: false,

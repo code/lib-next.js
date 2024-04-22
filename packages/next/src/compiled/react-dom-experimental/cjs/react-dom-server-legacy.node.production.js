@@ -10,8 +10,8 @@
 
 'use strict';
 
-var React = require('react');
-var ReactDOM = require('react-dom');
+var React = require("next/dist/compiled/react-experimental");
+var ReactDOM = require("next/dist/compiled/react-dom-experimental");
 var stream = require('stream');
 
 var ReactVersion = '18.3.0-experimental-14898b6a9-20240318';

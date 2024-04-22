@@ -40,8 +40,8 @@ import type { NextParsedUrlQuery } from './request-meta'
 import type { Revalidate, SwrDelta } from './lib/revalidate'
 import type { COMPILER_NAMES } from '../shared/lib/constants'
 
-import React from 'react'
-import ReactDOMServer from 'react-dom/server.browser'
+import React from 'next/dist/compiled/react'
+import ReactDOMServer from 'next/dist/compiled/react-dom/server.browser'
 import { StyleRegistry, createStyleRegistry } from 'styled-jsx'
 import {
   GSP_NO_RETURNED_VALUE,
@@ -564,7 +564,7 @@ export async function renderToHTMLImpl(
   let asPath: string = renderOpts.resolvedAsPath || (req.url as string)
 
   if (dev) {
-    const { isValidElementType } = require('react-is')
+    const { isValidElementType } = require('next/dist/compiled/react-is')
     if (!isValidElementType(Component)) {
       throw new Error(
         `The default export is not a React Component in page: "${pathname}"`

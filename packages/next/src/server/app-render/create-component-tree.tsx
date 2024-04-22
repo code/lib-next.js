@@ -1,5 +1,5 @@
 import type { FlightSegmentPath, CacheNodeSeedData } from './types'
-import React, { type ReactNode } from 'react'
+import React, { type ReactNode } from 'next/dist/compiled/react'
 import { isClientReference } from '../../lib/client-reference'
 import { getLayoutOrPageModule } from '../lib/app-dir-module'
 import type { LoaderTree } from '../lib/app-dir-module'
@@ -309,7 +309,7 @@ async function createComponentTreeInternal({
   }
 
   if (process.env.NODE_ENV === 'development') {
-    const { isValidElementType } = require('react-is')
+    const { isValidElementType } = require('next/dist/compiled/react-is')
     if (
       (isPage || typeof Component !== 'undefined') &&
       !isValidElementType(Component)

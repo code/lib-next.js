@@ -8,8 +8,8 @@ import type {
   PrivateRouteInfo,
 } from '../shared/lib/router/router'
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'next/dist/compiled/react'
+import ReactDOM from 'next/dist/compiled/react-dom/client'
 import { HeadManagerContext } from '../shared/lib/head-manager-context.shared-runtime'
 import mitt from '../shared/lib/mitt'
 import type { MittEmitter } from '../shared/lib/mitt'
@@ -893,7 +893,7 @@ export async function hydrate(opts?: { beforeRender?: () => Promise<void> }) {
     CachedComponent = pageEntrypoint.component
 
     if (process.env.NODE_ENV !== 'production') {
-      const { isValidElementType } = require('react-is')
+      const { isValidElementType } = require('next/dist/compiled/react-is')
       if (!isValidElementType(CachedComponent)) {
         throw new Error(
           `The default export is not a React Component in page: "${initialData.page}"`
