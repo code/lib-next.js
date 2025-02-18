@@ -43,14 +43,23 @@ export function ErrorOverlay({
   if (!!state.rootLayoutMissingTags?.length) {
     return (
       <RootLayoutMissingTagsError
-        missingTags={state.rootLayoutMissingTags}
         {...commonProps}
+        // This is not a runtime error, forcedly display error overlay
+        rendered
+        missingTags={state.rootLayoutMissingTags}
       />
     )
   }
 
   if (state.buildError !== null) {
-    return <BuildError message={state.buildError} {...commonProps} />
+    return (
+      <BuildError
+        {...commonProps}
+        message={state.buildError}
+        // This is not a runtime error, forcedly display error overlay
+        rendered
+      />
+    )
   }
 
   // No Runtime Errors.
@@ -64,12 +73,12 @@ export function ErrorOverlay({
 
   return (
     <Errors
+      {...commonProps}
       debugInfo={state.debugInfo}
       readyErrors={readyErrors}
       onClose={() => {
         setIsErrorOverlayOpen(false)
       }}
-      {...commonProps}
     />
   )
 }
